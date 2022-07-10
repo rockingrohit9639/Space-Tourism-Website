@@ -119,6 +119,11 @@ select {
   max-width: 80rem;
 }
 
+/* For consistent margins  */
+.flow > *:where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1rem);
+}
+
 /* Screen Reader only  */
 .sr-only {
   position: absolute;
