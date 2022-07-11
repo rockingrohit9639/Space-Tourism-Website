@@ -1,20 +1,20 @@
-/* ----------------------- */
-/* Custom Properties       */
-/* ----------------------- */
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
 
 :root {
-  /* colors  */
+  /* colors */
   --clr-dark: 230 35% 7%;
   --clr-light: 231 77% 90%;
   --clr-white: 0 0% 100%;
 
-  /* fonts-sizes  */
-  --fs-900: 9.375rem;
-  --fs-800: 6.25rem;
-  --fs-700: 3.5rem;
-  --fs-600: 2rem;
+  /* font-sizes */
+  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+  --fs-800: 3.5rem;
+  --fs-700: 1.5rem;
+  --fs-600: 1rem;
   --fs-500: 1.75rem;
-  --fs-400: 1.125rem;
+  --fs-400: 0.9375rem;
   --fs-300: 1rem;
   --fs-200: 0.875rem;
 
@@ -24,33 +24,49 @@
   --ff-sans-normal: "Barlow", sans-serif;
 }
 
-/* ----------------------- */
-/* Basic Reset             */
-/* ----------------------- */
+@media (min-width: 35em) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-400: 1rem;
+  }
+}
 
+@media (min-width: 45em) {
+  :root {
+    /* font-sizes */
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.125rem;
+  }
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-/* Margin reset */
-
+/* Reset margins */
 body,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
 p,
-picture,
-ul,
-ol,
-li,
-figure {
+figure,
+picture {
   margin: 0;
-  padding: 0;
 }
 
 h1,
@@ -63,7 +79,7 @@ p {
   font-weight: 400;
 }
 
-/* body  */
+/* set up the body */
 body {
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
@@ -71,15 +87,19 @@ body {
   background-color: hsl(var(--clr-dark));
   line-height: 1.5;
   min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
 }
 
+/* make images easier to work with */
 img,
-picture {
+picutre {
   max-width: 100%;
   display: block;
 }
 
-/* Forms Reset */
+/* make form elements easier to work with */
 input,
 button,
 textarea,
@@ -87,7 +107,7 @@ select {
   font: inherit;
 }
 
-/* Removing animations for them who have turned it off  */
+/* remove animations for people who've turned them off */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -99,9 +119,11 @@ select {
   }
 }
 
-/* ----------------------- */
-/* General Utility Classes */
-/* ----------------------- */
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
+
+/* general */
 
 .flex {
   display: flex;
@@ -113,18 +135,55 @@ select {
   gap: var(--gap, 1rem);
 }
 
+.d-block {
+  display: block;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-space, 1rem);
+}
+
 .container {
   padding-inline: 2em;
   margin-inline: auto;
   max-width: 80rem;
 }
 
-/* For consistent margins  */
-.flow > *:where(:not(:first-child)) {
-  margin-top: var(--flow-space, 1rem);
+.grid-container {
+  text-align: center;
+  display: grid;
+  place-items: center;
+  padding-inline: 1rem;
 }
 
-/* Screen Reader only  */
+.grid-container * {
+  max-width: 50ch;
+}
+
+@media (min-width: 45em) {
+  .grid-container {
+    text-align: left;
+    column-gap: var(--container-gap, 2rem);
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(
+        1rem,
+        1fr
+      );
+  }
+
+  .grid-container > *:first-child {
+    grid-column: 2;
+  }
+
+  .grid-container > *:last-child {
+    grid-column: 3;
+  }
+
+  .grid-container--home {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -137,7 +196,8 @@ select {
   border: 0;
 }
 
-/* Color utility classes  */
+/* colors */
+
 .bg-dark {
   background-color: hsl(var(--clr-dark));
 }
@@ -158,7 +218,8 @@ select {
   color: hsl(var(--clr-white));
 }
 
-/* Typography  */
+/* typography */
+
 .ff-serif {
   font-family: var(--ff-serif);
 }
@@ -228,14 +289,15 @@ select {
   color: hsl(var(--clr-white) / 0.25);
 }
 
-/* ----------------------- */
-/* Components              */
-/* ----------------------- */
+/* ------------------- */
+/* Compontents         */
+/* ------------------- */
 
 .large-button {
+  font-size: 2rem;
   position: relative;
-  display: grid;
   z-index: 1;
+  display: inline-grid;
   place-items: center;
   padding: 0 2em;
   border-radius: 50%;
@@ -249,7 +311,7 @@ select {
   z-index: -1;
   width: 100%;
   height: 100%;
-  background: hsl(var(--clr-white) / 0.15);
+  background: hsl(var(--clr-white) / 0.1);
   border-radius: 50%;
   opacity: 0;
   transition: opacity 500ms linear, transform 750ms ease-in-out;
@@ -317,24 +379,21 @@ select {
   background-color: hsl(var(--clr-white) / 1);
 }
 
-.numbered-indicators > * {
-  cursor: pointer;
-  border: 1px solid hsl(var(--clr-white) / 0.3);
-  padding: 0 1em;
-  border-radius: 50%;
-  aspect-ratio: 1;
-  text-decoration: none;
-  background-color: hsl(var(--clr-dark));
-  color: hsl(var(--clr-white));
-  display: block;
+/* ------------------- */
+/* Home Page           */
+/* ------------------- */
+body {
+  background-size: cover;
+  background-position: bottom center;
+}
+/* home */
+.home {
+  background-image: url(./assets/home/background-home-mobile.jpg);
 }
 
-.numbered-indicators > *:hover,
-.numbered-indicators > *:focus {
-  border: 1px solid hsl(var(--clr-white) / 1);
-}
-
-.numbered-indicators > [aria-selected="true"] {
-  color: hsl(var(--clr-dark) / 1);
-  background-color: hsl(var(--clr-white) / 1);
+@media (min-width: 35rem) {
+  .home {
+    background-position: center center;
+    background-image: url(./assets/home/background-home-tablet.jpg);
+  }
 }
