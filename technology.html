@@ -48,38 +48,63 @@
 
         <div class="tech-data flex">
             <div class="tab-list numbered-indicators flex" role="tablist" aria-label="technology list">
-                <button aria-selected="true" role="tab" aria-controls="launch-vehicle-image-tab"
-                    class="ff-serif text-accent" tabindex="0" data-image="launch-vehicle-image">1</button>
-                <button aria-selected="false" role="tab" aria-controls="space-port-image-tab"
-                    class="ff-serif text-accent" tabindex="-1" data-image="space-port-image">2</button>
-                <button aria-selected="false" role="tab" aria-controls="space-capsule-image-tab"
-                    class="ff-serif text-accent" tabindex="-1" data-image="space-capsule-image">3</button>
+                <button aria-selected="true" role="tab" aria-controls="launch-vehicle-tab" class="ff-serif text-accent"
+                    tabindex="0" data-image="launch-vehicle-image" data-type="technology">1</button>
+                <button aria-selected="false" role="tab" aria-controls="space-port-tab" class="ff-serif text-accent"
+                    tabindex="-1" data-image="space-port-image" data-type="technology">2</button>
+                <button aria-selected="false" role="tab" aria-controls="space-capsule-tab" class="ff-serif text-accent"
+                    tabindex="-1" data-image="space-capsule-image" data-type="technology">3</button>
             </div>
 
             <!-- launch vehicle -->
-            <article class="technology-details flow" id="commander-tab" role="tabpanel" tabindex="0">
+            <article class="technology-details flow" id=launch-vehicle-tab" role="tabpanel" tabindex="0">
                 <p class="subhead uppercase ff-sans-normal letter-spacing-3 text-accent">THE TERMINOLOGY…</p>
                 <header class="flow flow--space-small">
                     <p class="fs-700 uppercase ff-serif">LAUNCH VEHICLE</p>
                 </header>
-                <p class="text-accent ff-sans-normal">A launch vehicle or carrier rocket is a rocket-propelled vehicle
+                <p class="text-accent ff-sans-normal fs-200">A launch vehicle or carrier rocket is a rocket-propelled
+                    vehicle
                     used to carry a payload from Earth's
                     surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in
                     operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!</p>
             </article>
+
+            <!-- launch vehicle -->
+            <article hidden class="technology-details flow" id="space-port-tab" role="tabpanel" tabindex="0">
+                <p class="subhead uppercase ff-sans-normal letter-spacing-3 text-accent">THE TERMINOLOGY…</p>
+                <header class="flow flow--space-small">
+                    <p class="fs-700 uppercase ff-serif">SPACEPORT</p>
+                </header>
+                <p class="text-accent ff-sans-normal fs-200">A spaceport or cosmodrome is a site for launching (or
+                    receiving)
+                    spacecraft, by analogy to the seaport for ships or airport for aircraft. Based in the famous Cape
+                    Canaveral, our spaceport is ideally situated to take advantage of the Earth’s rotation for launch.
+                </p>
+            </article>
+
+            <!-- launch vehicle -->
+            <article hidden class="technology-details flow" id="space-capsule-tab" role="tabpanel" tabindex="0">
+                <p class="subhead uppercase ff-sans-normal letter-spacing-3 text-accent">THE TERMINOLOGY…</p>
+                <header class="flow flow--space-small">
+                    <p class="fs-700 uppercase ff-serif">SPACE CAPSULE</p>
+                </header>
+                <p class="text-accent ff-sans-normal fs-200">A space capsule is an often-crewed spacecraft that uses a
+                    blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where
+                    you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other
+                    activities to keep you entertained.</p>
+            </article>
         </div>
 
-        <picture id="vehicle-image">
+        <picture id="launch-vehicle-image">
             <img src="assets/technology/image-launch-vehicle-landscape.jpg" alt="Launch Vehicle">
             <img src="assets/technology/image-launch-vehicle-portrait.jpg" alt="Launch Vehicle">
         </picture>
-        <picture hidden id="spaceport-image">
-            <source srcset="assets/technology/image-spaceport-landscape.jpg" type="image/webp">
+        <picture hidden id="space-port-image">
             <img src="assets/technology/image-spaceport-landscape.jpg" alt="Space Port">
             <img src="assets/technology/image-spaceport-portrait.jpg" alt="Space Port">
         </picture>
-        <picture hidden id="spacecapsule-image">
-            <source srcset="assets/technology/image-space-capsule-landscape.jpg" type="image/webp">
+        <picture hidden id="space-capsule-image">
+            <img src="assets/technology/image-space-capsule-landscape.jpg" alt="Space Capsule">
             <img src="assets/technology/image-space-capsule-portrait.jpg" alt="Space Capsule">
         </picture>
     </main>

@@ -36,9 +36,16 @@ function changeTabPanel(e) {
   const targetTab = e.target;
   const targetPanel = targetTab.getAttribute("aria-controls");
   const targetImage = targetTab.getAttribute("data-image");
+  const dataType = targetTab.getAttribute("data-type");
 
-  const tabContainer = targetTab.parentNode;
-  const mainContainer = tabContainer.parentNode;
+  let tabContainer = targetTab.parentNode;
+  let mainContainer = null;
+
+  if (dataType === "technology") {
+    mainContainer = tabContainer.parentNode.parentNode;
+  } else {
+    mainContainer = tabContainer.parentNode;
+  }
 
   tabContainer
     .querySelector('[aria-selected="true"]')
